@@ -3,10 +3,11 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "storybook"
+      "example"
     ]
   },
   "scripts": {
+    "example": "yarn workspace @nevinha-code/example",
     "nc-hilight": "yarn workspace @nevinha-code/hilight",
     "nc-build": "yarn workspace @nevinha-code/build",
     "watch-packages": "yarn nc-hilight watch",
