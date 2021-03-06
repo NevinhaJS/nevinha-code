@@ -15,7 +15,6 @@
     "@emotion/styled": "^11.1.5",
     "@nevinha-code/build": "0.0.1",
     "@types/react": "^16.9.38",
-    "html-to-react": "^1.4.5",
     "react": "^16.13.1"
   },
   "peerDependencies": {

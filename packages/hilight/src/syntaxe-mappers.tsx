@@ -11,9 +11,17 @@ const SPECIAL_CHARACTERS_REGEX = /(\(|\)|\=|\?|\:|\{|\}|\[|\])/g;
 const COMMENT_REGEX = /(\/\*.*\*\/)/g;
 const INLINE_COMMENT_REGEX = /(\/\/.*)/g;
 
+export const utils = {
+  validateExpression: (value: string, key: string) => {
+    const { reference } = SYNTAXE_MAPPERS[key];
+
+    return reference.test(value);
+  },
+};
+
 // TODO: Replace the components definition
 // for a styled component.
-export const SYNTAXE_MAPPERS: any = {
+const SYNTAXE_MAPPERS: any = {
   COMMON_QUOTE_REGEX: {
     reference: COMMON_QUOTE_REGEX,
     Component: ({ children }: any) => <span id="quote">{children}</span>,
@@ -55,3 +63,5 @@ export const SYNTAXE_MAPPERS: any = {
     Component: ({ children }: any) => <span id="special-chars">{children}</span>,
   },
 };
+
+export default SYNTAXE_MAPPERS;
