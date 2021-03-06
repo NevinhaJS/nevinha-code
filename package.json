@@ -7,9 +7,9 @@
     ]
   },
   "scripts": {
-    "c-hilight": "yarn workspace @nevinha-code/code-hilight",
-    "nev-build": "yarn workspace @nevinha-code/build",
-    "watch-packages": "yarn c-hilight watch",
-    "build-packages": "yarn c-hilight build"
+    "nc-hilight": "yarn workspace @nevinha-code/hilight",
+    "nc-build": "yarn workspace @nevinha-code/build",
+    "watch-packages": "yarn nc-hilight watch",
+    "build-packages": "yarn nc-hilight build"
   }
 }

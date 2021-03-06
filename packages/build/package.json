@@ -2,7 +2,7 @@
   "name": "@nevinha-code/build",
   "version": "0.0.1",
   "bin": {
-    "nev-build": "./build.js"
+    "nc-build": "./build.js"
   },
   "dependencies": {
     "rollup": "^2.40.0",

@@ -1,5 +1,5 @@
 {
-  "name": "@nevinha-code/code-hilight",
+  "name": "@nevinha-code/hilight",
   "version": "0.0.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -8,8 +8,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "nev-build",
-    "watch": "nev-build --watch"
+    "build": "nc-build",
+    "watch": "nc-build --watch"
   },
   "devDependencies": {
     "@emotion/styled": "^11.1.5",
@@ -24,8 +24,8 @@
   "keywords": [
     "react",
     "nevinha",
-    "code-hilight",
-    "code hilight"
+    "code",
+    "hilight"
   ],
   "repository": "NevinhaJS/nevinha-code",
   "license": "MIT"
