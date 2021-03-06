@@ -1,5 +1,3 @@
-import Transformer from "./transformer";
+import Hilight from "./Hilight";
 
-const base = "const nevinha = 'oi'";
-
-console.log(Transformer().toReact(base));
+export default Hilight;

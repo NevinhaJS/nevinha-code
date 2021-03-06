@@ -1,5 +1,5 @@
 import React from "react";
-import SYNTAXE_MAPPERS, { utils } from "syntaxe-mappers";
+import SYNTAXE_MAPPERS, { utils } from "./syntaxe-mappers";
 
 //TODO: remove `any` types
 const Transformer = () => {
@@ -7,11 +7,29 @@ const Transformer = () => {
     return Object.keys(SYNTAXE_MAPPERS).find((key) => utils.validateExpression(value, key));
   };
 
+  const convertToLines = (code: string) => {
+    return Array.prototype.reduce.call(
+      code,
+      (acc: any, value: any) => {
+        if (!acc.length) return [value];
+
+        if (value === " " || acc[acc.length - 1] === " ") {
+          return [...acc, value];
+        }
+
+        acc[acc.length - 1] += value;
+
+        return acc;
+      },
+      []
+    );
+  };
+
   const mapToSyntaxes = (
-    base: string[],
+    line: string[],
     next: (Component: React.FC, value: string, index: number) => any
   ) => {
-    return base.map((value: string, index) => {
+    return line.map((value: string, index) => {
       const syntaxeKey = findMapperKey(value);
 
       if (!syntaxeKey) return value;
@@ -22,9 +40,10 @@ const Transformer = () => {
     });
   };
 
-  const toReact = (base: string) => {
-    const baseArray = base.split(" ");
-    const result = mapToSyntaxes(baseArray, (Component: React.FC, value, index) => {
+  const toReact = (code: string) => {
+    const lines: any = convertToLines(code);
+
+    const result = mapToSyntaxes(lines, (Component: React.FC, value, index) => {
       return React.createElement(Component, { key: index }, [value]);
     });
 
