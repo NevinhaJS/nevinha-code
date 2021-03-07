@@ -8,8 +8,6 @@ interface LinesProviderProps {
 export const LinesContext = createContext([]);
 
 const LinesProvider = memo(({ codeBase, children }: LinesProviderProps) => {
-  const [code, setCode]: any = useState(() => convertToLines(codeBase));
-
   const convertToLines = useCallback((targetCode) => {
     return Array.prototype.reduce.call(
       targetCode,
@@ -27,6 +25,8 @@ const LinesProvider = memo(({ codeBase, children }: LinesProviderProps) => {
       []
     );
   }, []);
+
+  const [code, setCode]: any = useState(() => convertToLines(codeBase));
 
   useEffect(() => {
     const newCode = convertToLines(codeBase);
