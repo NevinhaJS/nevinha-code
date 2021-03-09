@@ -1,15 +1,15 @@
 import React from "react";
 
-const COMMON_QUOTE_REGEX = /"(.*?)"/g;
-const SINGLE_QUOTE_REGEX = /'(.*?)'/g;
-const SPECIAL_QUOTE_REGEX = /`(.*?)`/g;
+const COMMON_QUOTE_REGEX = /"(.*?)"/;
+const SINGLE_QUOTE_REGEX = /'(.*?)'/;
+const SPECIAL_QUOTE_REGEX = /`(.*?)`/;
 const LANGUAGE_CHAR_REGEX = /\b(const|new|var|if|do|function|while|switch|for|foreach|in|continue|break)/g;
-const SPECIAL_JS_REGEX = /\b(document|window|Array|String|Object|Number|\$)/g;
-const DOM_API_REGEX = /\b(getElementsBy(TagName|ClassName|Name)|getElementById|typeof|instanceof)/g;
-const SPECIAL_METH_REGEX = /\b(indexOf|match|replace|toString|length)/g;
-const SPECIAL_CHARACTERS_REGEX = /(\(|\)|\=|\?|\:|\{|\}|\[|\])/g;
-const COMMENT_REGEX = /(\/\*.*\*\/)/g;
-const INLINE_COMMENT_REGEX = /(\/\/.*)/g;
+const SPECIAL_JS_REGEX = /\b(document|window|Array|String|Object|Number|\$)/;
+const DOM_API_REGEX = /\b(getElementsBy(TagName|ClassName|Name)|getElementById|typeof|instanceof)/;
+const SPECIAL_METH_REGEX = /\b(indexOf|match|replace|toString|length)/;
+const COMMENT_REGEX = /(\/\*.*\*\/)/;
+const INLINE_COMMENT_REGEX = /(\/\/.*)/;
+export const SPECIAL_CHARACTERS_REGEX = /(\(|\)|\=|\?|\:|\{|\}|\[|\])/;
 
 export const utils = {
   validateExpression: (value: string, key: string) => {

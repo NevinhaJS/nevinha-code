@@ -4,15 +4,15 @@ import { LinesContext } from "../LinesProvider";
 
 // //TODO: remove `any` types
 const Transformer = () => {
-  const linesContext: string[] = useContext(LinesContext);
+  const { base }: any = useContext(LinesContext);
 
   const findMapperKey = useCallback((value: string) => {
     return Object.keys(SYNTAXE_MAPPERS).find((key) => utils.validateExpression(value, key));
   }, []);
 
   const mapToSyntaxes = useCallback(
-    (line: string[], next: (Component: React.FC, value: string, index: number) => any) => {
-      return line.map((value: string, index) => {
+    (base: string[], next: (Component: React.FC, value: string, index: number) => any) => {
+      return base.map((value: string, index) => {
         const syntaxeKey = findMapperKey(value);
 
         if (!syntaxeKey) return value;
@@ -29,7 +29,7 @@ const Transformer = () => {
     return React.createElement(Component, { key: index }, [value]);
   };
 
-  return <>{mapToSyntaxes(linesContext, renderElements)}</>;
+  return <>{mapToSyntaxes(base, renderElements)}</>;
 };
 
 export default Transformer;
