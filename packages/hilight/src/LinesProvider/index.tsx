@@ -35,11 +35,11 @@ const parseValue = ({ lines, base }: any, value: string) => {
 };
 
 const LinesProvider = memo(({ codeBase, children }: LinesProviderProps) => {
-  const convertToLines = useCallback((targetCode: string) => {
-    const result = Array.prototype.reduce.call(targetCode, parseValue, { base: [], lines: [] });
-
-    return result;
-  }, []);
+  const convertToLines = useCallback(
+    (targetCode: string) =>
+      Array.prototype.reduce.call(targetCode, parseValue, { base: [], lines: [] }),
+    []
+  );
 
   const code: any = React.useMemo(() => convertToLines(codeBase), [codeBase]);
 
