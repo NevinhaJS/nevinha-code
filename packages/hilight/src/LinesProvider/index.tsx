@@ -1,4 +1,4 @@
-import React, { memo, createContext, useCallback } from "react";
+import React, { memo, createContext, useRef, useEffect, useCallback, useState } from "react";
 import { isBlockSeparator, isNewLine } from "./utils";
 
 interface LinesProviderProps {
@@ -40,10 +40,21 @@ const LinesProvider = memo(({ codeBase, children }: LinesProviderProps) => {
       Array.prototype.reduce.call(targetCode, parseValue, { base: [], lines: [] }),
     []
   );
+  const momoizedCode: any = React.useMemo(() => convertToLines(codeBase), [codeBase]);
 
-  const code: any = React.useMemo(() => convertToLines(codeBase), [codeBase]);
+  return (
+    <LinesContext.Provider value={momoizedCode}>
+      <div>
+        {momoizedCode.lines.map((value: string, index: number) => (
+          <span key={index} style={{ display: "block", paddingRight: 10 }}>
+            {index + 1}
+          </span>
+        ))}
+      </div>
 
-  return <LinesContext.Provider value={code}>{children}</LinesContext.Provider>;
+      <div>{children}</div>
+    </LinesContext.Provider>
+  );
 });
 
 export default LinesProvider;
