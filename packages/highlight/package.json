@@ -1,5 +1,5 @@
 {
-  "name": "@nevinha-code/hilight",
+  "name": "@nevinha-code/highlight",
   "version": "0.0.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -24,7 +24,7 @@
     "react",
     "nevinha",
     "code",
-    "hilight"
+    "highlight"
   ],
   "repository": "NevinhaJS/nevinha-code",
   "license": "MIT"

@@ -1,4 +1,4 @@
-import Highlight from "@nevinha-code/hilight";
+import Highlight from "@nevinha-code/highlight";
 
 const code = `import React from "react";
 
@@ -6,7 +6,7 @@ import Transformer from "../Transformer";
 
 const { toReact } = Transformer();
 
-const Hilight = ({ code }: any) => {
+const highlight = ({ code }: any) => {
   return (
     <pre>
       <div>ad</div>
@@ -15,7 +15,7 @@ const Hilight = ({ code }: any) => {
   );
 };
 
-export default Hilight;
+export default highlight;
 `;
 
 function App() {

@@ -3,7 +3,7 @@ import React from "react";
 import LinesProvider from "../LinesProvider";
 import Transformer from "../Transformer";
 
-const Hilight = ({ code }: any) => {
+const Highlight = ({ code }: any) => {
   return (
     <pre>
       {/* TODO: Use styled components from the theme package */}
@@ -16,4 +16,4 @@ const Hilight = ({ code }: any) => {
   );
 };
 
-export default Hilight;
+export default Highlight;

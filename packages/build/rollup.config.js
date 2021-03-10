@@ -3,7 +3,7 @@ import typescript from "rollup-plugin-typescript2";
 const plugins = [typescript()];
 
 const createConfig = (filename) => ({
-  input: `src/${filename}.tsx`,
+  input: `src/${filename}.ts`,
   external: ["react"],
   output: [
     {
