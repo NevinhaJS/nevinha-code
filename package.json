@@ -8,9 +8,10 @@
   },
   "scripts": {
     "example": "yarn workspace @nevinha-code/example",
-    "nc-hilight": "yarn workspace @nevinha-code/hilight",
+    "nc-highlight": "yarn workspace @nevinha-code/highlight",
+    "nc-theme": "yarn workspace @nevinha-code/theme",
     "nc-build": "yarn workspace @nevinha-code/build",
-    "watch-packages": "yarn nc-hilight watch",
-    "build-packages": "yarn nc-hilight build"
+    "watch-packages": "yarn nc-highlight watch && yarn nc-theme watch",
+    "build-packages": "yarn nc-highlight build && yarn nc-theme build"
   }
 }

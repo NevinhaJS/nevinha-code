@@ -1,0 +1,21 @@
+{
+  "name": "@nevinha-code/theme",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "nc-build",
+    "watch": "nc-build --watch"
+  },
+  "keywords": [
+    "nevinha",
+    "code",
+    "theme"
+  ],
+  "repository": "NevinhaJS/nevinha-code",
+  "license": "MIT"
+}
