@@ -1,20 +1,22 @@
 import Highlight from "@nevinha-code/highlight";
 
-const code = `import React from "react";
+const code = `import nevinha from 'nevinha'
 
-import Transformer from "../Transformer";
+const myFunction = () => {
+  return "Hey!"
+}
 
-const { toReact } = Transformer();
+console.log("Hello")
 
-const date = new Date("asdasd","asd");
+Math.abs(-123)
 
-Math.abs("asd")
+const date = new Date("2021-03-03")
 
-export default highlight;
+export default myFunction;
 `;
 
-function App() {
+const App = () => {
   return <Highlight code={code} />;
-}
+};
 
 export default App;
