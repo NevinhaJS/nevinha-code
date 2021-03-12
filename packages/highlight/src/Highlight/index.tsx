@@ -1,18 +1,22 @@
 import React from "react";
+import { ThemeProvider } from "@emotion/react";
 
+import { dark } from "@nevinha-code/theme";
 import LinesProvider from "../LinesProvider";
 import Transformer from "../Transformer";
+import { HighlightWrapper, HighlightContainer } from "./styled";
 
-const Highlight = ({ code }: any) => {
+const Highlight = ({ code, theme = dark }: any) => {
   return (
-    <pre>
-      {/* TODO: Use styled components from the theme package */}
-      <code style={{ lineHeight: "24px", display: "flex" }}>
-        <LinesProvider codeBase={code.trim()}>
-          <Transformer />
-        </LinesProvider>
-      </code>
-    </pre>
+    <ThemeProvider theme={theme}>
+      <HighlightWrapper>
+        <HighlightContainer>
+          <LinesProvider codeBase={code.trim()}>
+            <Transformer />
+          </LinesProvider>
+        </HighlightContainer>
+      </HighlightWrapper>
+    </ThemeProvider>
   );
 };
 

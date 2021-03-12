@@ -27,5 +27,8 @@
     "highlight"
   ],
   "repository": "NevinhaJS/nevinha-code",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.1.5"
+  }
 }

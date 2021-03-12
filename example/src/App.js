@@ -6,14 +6,9 @@ import Transformer from "../Transformer";
 
 const { toReact } = Transformer();
 
-const highlight = ({ code }: any) => {
-  return (
-    <pre>
-      <div>ad</div>
-      <code>{toReact(code)}</code>
-    </pre>
-  );
-};
+const date = new Date("asdasd","asd");
+
+Math.abs("asd")
 
 export default highlight;
 `;

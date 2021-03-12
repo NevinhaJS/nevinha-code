@@ -1,5 +1,6 @@
 import React, { memo, createContext, useRef, useEffect, useCallback, useState } from "react";
-import { isBlockSeparator, isNewLine } from "./utils";
+import { LineItem } from "./styled";
+import { isBeginningOfAnArgument, isBlockSeparator, isNewLine } from "./utils";
 
 interface LinesProviderProps {
   codeBase: string;
@@ -20,6 +21,7 @@ const parseValue = ({ lines, base }: any, value: string) => {
 
   if (
     isBlockSeparator(value) ||
+    isBeginningOfAnArgument(base[base.length - 1] + value) ||
     isBlockSeparator(base[base.length - 1]) ||
     lines[lines.length - 1] === " "
   ) {
@@ -46,9 +48,7 @@ const LinesProvider = memo(({ codeBase, children }: LinesProviderProps) => {
     <LinesContext.Provider value={momoizedCode}>
       <div>
         {momoizedCode.lines.map((value: string, index: number) => (
-          <span key={index} style={{ display: "block", paddingRight: 10 }}>
-            {index + 1}
-          </span>
+          <LineItem key={index}>{index + 1}</LineItem>
         ))}
       </div>
 

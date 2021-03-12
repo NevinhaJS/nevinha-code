@@ -11,7 +11,7 @@
     "nc-highlight": "yarn workspace @nevinha-code/highlight",
     "nc-theme": "yarn workspace @nevinha-code/theme",
     "nc-build": "yarn workspace @nevinha-code/build",
-    "watch-packages": "yarn nc-highlight watch && yarn nc-theme watch",
-    "build-packages": "yarn nc-highlight build && yarn nc-theme build"
+    "watch-packages": "yarn nc-theme build && yarn nc-highlight watch",
+    "build-packages": "yarn nc-theme build && yarn nc-highlight build"
   }
 }

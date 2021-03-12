@@ -1,15 +1,24 @@
 import React from "react";
+import Callable from "./components/Callable";
+import LanguageChar from "./components/LanguageChar";
+import Quote from "./components/Quote";
+import References from "./components/References";
+import SpecialChar from "./components/SpecialChar";
 
 const COMMON_QUOTE_REGEX = /"(.*?)"/;
 const SINGLE_QUOTE_REGEX = /'(.*?)'/;
+
 const SPECIAL_QUOTE_REGEX = /`(.*?)`/;
-const LANGUAGE_CHAR_REGEX = /\b(const|new|var|if|do|function|while|switch|for|foreach|in|continue|break)/g;
+const LANGUAGE_CHAR_REGEX = /\b(const|default|new|var|if|do|function|while|switch|for|foreach|in|continue|break)/g;
 const SPECIAL_JS_REGEX = /\b(document|window|Array|String|Object|Number|\$)/;
 const DOM_API_REGEX = /\b(getElementsBy(TagName|ClassName|Name)|getElementById|typeof|instanceof)/;
 const SPECIAL_METH_REGEX = /\b(indexOf|match|replace|toString|length)/;
 const COMMENT_REGEX = /(\/\*.*\*\/)/;
 const INLINE_COMMENT_REGEX = /(\/\/.*)/;
-export const SPECIAL_CHARACTERS_REGEX = /(\(|\)|\=|\?|\:|\{|\}|\[|\])/;
+const REFERENCES_REGEX = /\b(import|export|from|return)/;
+const CALLABLE_REGEX = /([A-Za-z]+)(\()/;
+
+export const SPECIAL_CHARACTERS_REGEX = /(\(|\)|\.|\=|\,|\?|\:|\{|\}|\[|\]|\>|\<|\;)/;
 
 export const utils = {
   validateExpression: (value: string, key: string) => {
@@ -22,13 +31,17 @@ export const utils = {
 // TODO: Replace the components definition
 // for a styled component.
 const SYNTAXE_MAPPERS: any = {
+  CALLABLE: {
+    reference: CALLABLE_REGEX,
+    Component: Callable,
+  },
   COMMON_QUOTE_REGEX: {
     reference: COMMON_QUOTE_REGEX,
-    Component: ({ children }: any) => <span id="quote">{children}</span>,
+    Component: Quote,
   },
   SINGLE_QUOTE_REGEX: {
     reference: SINGLE_QUOTE_REGEX,
-    Component: ({ children }: any) => <span id="single-quote">{children}</span>,
+    Component: Quote,
   },
   SPECIAL_QUOTE_REGEX: {
     reference: SPECIAL_QUOTE_REGEX,
@@ -36,7 +49,7 @@ const SYNTAXE_MAPPERS: any = {
   },
   LANGUAGE_CHAR_REGEX: {
     reference: LANGUAGE_CHAR_REGEX,
-    Component: ({ children }: any) => <span id="language-char">{children}</span>,
+    Component: LanguageChar,
   },
   SPECIAL_JS_REGEX: {
     reference: SPECIAL_JS_REGEX,
@@ -60,7 +73,11 @@ const SYNTAXE_MAPPERS: any = {
   },
   SPECIAL_CHARACTERS_REGEX: {
     reference: SPECIAL_CHARACTERS_REGEX,
-    Component: ({ children }: any) => <span id="special-chars">{children}</span>,
+    Component: SpecialChar,
+  },
+  REFERENCES_REGEX: {
+    reference: REFERENCES_REGEX,
+    Component: References,
   },
 };
 
