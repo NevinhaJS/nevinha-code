@@ -10,10 +10,29 @@ console.log("Hello")
 
 Math.abs(-123)
 
-const date = new Date("2021-03-03")
+new Date("2021- 03-03");
 
 export default myFunction;
 `;
+
+// [
+//   [
+//     {
+//       children: [
+//         {
+//           children: '"',
+//         },
+//         {
+//           children: "2021-",
+//         },
+//         {
+//           children: "03-03",
+//         },
+//       ],
+//       component: StringDeclaration,
+//     },
+//   ],
+// ];
 
 const App = () => {
   return <Highlight code={code} />;

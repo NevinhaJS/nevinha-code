@@ -11,7 +11,7 @@ export const isBeginningOfAnArgument = (value: string) => /\([\w\"\'\-\+\/\*]/.t
 //
 // nevinha()
 export const isBlockSeparator = (value: string): boolean => {
-  if (value === " " || isNewLine(value) || /(\=|\?|\:|\{|\}|\.|\[|\]|\>|\<|\;|\)|\,)/.test(value)) {
+  if (value === " " || /(\=|\?|\:|\{|\}|\.|\[|\]|\>|\<|\;|\)|\(|\,)/.test(value)) {
     return true;
   }
 
