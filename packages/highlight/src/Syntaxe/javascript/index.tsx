@@ -1,4 +1,5 @@
 import React from "react";
+import Contable from "Syntaxe/components/Contable";
 import Callable from "../components/Callable";
 import LanguageChar from "../components/LanguageChar";
 import Quote from "../components/Quote";
@@ -17,7 +18,8 @@ const COMMENT_REGEX = /(\/\*.*\*\/)/;
 const INLINE_COMMENT_REGEX = /(\/\/.*)/;
 const REFERENCES_REGEX = /\b(import|export|from|return)/;
 const CALLABLE_REGEX = /([A-Za-z]+)(\()/;
-const SPECIAL_CHARACTERS_REGEX = /^(\(|\)|\.|\,|\?|\:|\{|\}|\[|\]|\;)$/;
+const SPECIAL_CHARACTERS_REGEX = /(\(|\)|\.|\,|\?|\:|\{|\}|\[|\]|\;|\+|\-|\%|\*|\/)/;
+const NUMBERS_REGEX = /[0-9]/;
 
 // TODO: Replace the components definition
 // for a styled component.
@@ -41,6 +43,10 @@ export default {
   LANGUAGE_CHAR_REGEX: {
     reference: LANGUAGE_CHAR_REGEX,
     Component: LanguageChar,
+  },
+  NUMBERS_REGEX: {
+    reference: NUMBERS_REGEX,
+    Component: Contable,
   },
   SPECIAL_JS_REGEX: {
     reference: SPECIAL_JS_REGEX,

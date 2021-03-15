@@ -6,6 +6,7 @@ export default {
     light: "#fff",
     reference: "#DCDDA4",
     success: "#399DDB",
+    passed: "#4FCC8C",
     dark: "#1E1E1E",
     dark300: "#858585",
   },
