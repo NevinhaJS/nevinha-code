@@ -5,6 +5,8 @@ const SpecialCharText = styled.span`
   color: ${({ theme: { colors } }: any) => colors.light};
 `;
 
-const SpecialChar = ({ children }: any) => <SpecialCharText>{children}</SpecialCharText>;
+const SpecialChar = ({ children }: any) => {
+  return <SpecialCharText>{children}</SpecialCharText>;
+};
 
 export default SpecialChar;

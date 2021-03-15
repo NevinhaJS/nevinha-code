@@ -3,7 +3,7 @@ import { ThemeProvider } from "@emotion/react";
 
 import { dark } from "@nevinha-code/theme";
 import LinesProvider from "../LinesProvider";
-import Transformer from "../Transformer";
+import Render from "../Render";
 import { HighlightWrapper, HighlightContainer } from "./styled";
 
 const Highlight = ({ code, theme = dark }: any) => {
@@ -11,8 +11,8 @@ const Highlight = ({ code, theme = dark }: any) => {
     <ThemeProvider theme={theme}>
       <HighlightWrapper>
         <HighlightContainer>
-          <LinesProvider codeBase={code.trim()}>
-            <Transformer />
+          <LinesProvider codeBase={code}>
+            <Render />
           </LinesProvider>
         </HighlightContainer>
       </HighlightWrapper>

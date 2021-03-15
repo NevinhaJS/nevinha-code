@@ -1,6 +1,6 @@
-import React, { memo, createContext, useRef, useEffect, useCallback, useState } from "react";
+import React, { memo, createContext, useCallback } from "react";
 import { LineItem } from "./styled";
-import { isBeginningOfAnArgument, isBlockSeparator, isNewLine } from "./utils";
+import { parser } from "../Tokenizer";
 
 interface LinesProviderProps {
   codeBase: string;
@@ -9,82 +9,17 @@ interface LinesProviderProps {
 
 export const LinesContext = createContext([]);
 
-// const parseValue = ({ lines, base }: any, value: string) => {
-//   if (!base.length || isNewLine(value)) {
-//     return {
-//       base: [...base, value],
-//       lines: [...lines, value],
-//     };
-//   }
-
-//   lines[lines.length - 1] += value;
-
-//   if (
-//     isBlockSeparator(value) ||
-//     isBeginningOfAnArgument(base[base.length - 1] + value) ||
-//     isBlockSeparator(base[base.length - 1]) ||
-//     lines[lines.length - 1] === " "
-//   ) {
-//     return {
-//       lines,
-//       base: [...base, value],
-//     };
-//   }
-
-//   base[base.length - 1] += value;
-
-//   return { lines, base };
-// };
-
-const addVirtualElement = (base: string) => {
-  return {
-    children: base,
-    component: null,
-  };
-};
-
-const generateTree = (code: string) => {
+// Todo: This function needs to be refactor
+// I'm thinking about using a AST parser instead of tokens
+const generateTokens = (code: string) => {
   const lines = code.split("\n");
+  const tokens = lines.map((line) => parser(line));
 
-  const tree = lines.map((line) => {
-    let vTree: any = [];
-    let base: any = "";
-    let queue: any = [];
-
-    Array.prototype.forEach.call(line, (value) => {
-      if (/'|"/.test(value) && !queue.length) {
-        queue.push(value);
-        base = value;
-        return;
-      } else if (/'|"/.test(value) && queue.length) {
-        queue.shift(value);
-        base += value;
-
-        vTree = [...vTree, addVirtualElement(base)];
-        base = "";
-
-        return;
-      } else if (isBlockSeparator(value) && !queue.length) {
-        vTree = [...vTree, addVirtualElement(base), addVirtualElement(value)];
-        base = "";
-
-        return;
-      }
-
-      base += value;
-    });
-
-    return vTree;
-  });
-
-  return tree;
+  return tokens;
 };
 
 const LinesProvider = memo(({ codeBase, children }: LinesProviderProps) => {
-  const convertToLines = useCallback((targetCode: string) => {
-    return generateTree(targetCode);
-    // return Array.prototype.reduce.call(targetCode, parseValue, { base: [], lines: [] });
-  }, []);
+  const convertToLines = useCallback((targetCode: string) => generateTokens(targetCode), []);
   const momoizedCode: any = React.useMemo(() => convertToLines(codeBase), [codeBase]);
 
   return (
@@ -95,7 +30,7 @@ const LinesProvider = memo(({ codeBase, children }: LinesProviderProps) => {
         ))}
       </div>
 
-      {/* <div>{children}</div> */}
+      <div>{children}</div>
     </LinesContext.Provider>
   );
 });
